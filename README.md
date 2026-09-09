@@ -107,7 +107,7 @@ _________________________________
 - Ссылка Клиент ID
 - Количество
 - Цена за 1 кол-во
-- дата
+- Ссылка Calendar ID
 - Время начала
 - Время окончания
 
@@ -118,7 +118,7 @@ _________________________________
 - тип движения: ввод остатков, приход, расход
 - тип операции: резерв, подтверждено, куплено, отменено
 - тип оплаты: нал, безнал
-- зарезервированная дата
+- Ссылка Calendar ID (зарезервированная дата)
 - зарезервированное время
 - время события
 - количество
@@ -164,7 +164,7 @@ _________________________________
 - `ClientId` BIGINT FK → `Client.ClientId`
 - `Quantity` INT — количество
 - `Price` DECIMAL(10,2) — цена за 1 кол-во
-- `Date` DATE — дата
+- `CalendarId` BIGINT FK → `Calendar.CalendarId` — дата строки бронирования
 - `StartTime` DATETIME — время начала
 - `EndTime` DATETIME — время окончания
 
@@ -175,7 +175,7 @@ _________________________________
 - `MovementType` INT — тип движения: ввод остатков / приход / расход
 - `OperationType` INT — тип операции: резерв / подтверждено / куплено / отменено
 - `PaymentType` INT — тип оплаты: нал / безнал
-- `ReservedDate` DATE — зарезервированная дата
+- `CalendarId` BIGINT FK → `Calendar.CalendarId` — зарезервированная дата
 - `ReservedTime` DATETIME — зарезервированное время
 - `EventTime` DATETIME — время события
 - `Quantity` INT — количество
@@ -200,10 +200,13 @@ FK-связи (рёбра ERD) отмечены колонками со ссыл
 | 4 | `BookingLine.ResourceId` | `Resource.ResourceId` | Resource 1—N BookingLine |
 | 5 | `Inventory.ResourceId` | `Resource.ResourceId` | Resource 1—N Inventory |
 | 6 | `Inventory.BookingId` | `Booking.BookingId` | Booking 1—N Inventory |
+| 7 | `BookingLine.CalendarId` | `Calendar.CalendarId` | Calendar 1—N BookingLine |
+| 8 | `Inventory.CalendarId` | `Calendar.CalendarId` | Calendar 1—N Inventory |
 
 Семантика: один клиент — много бронирований; бронирование — много строк
 бронирования; ресурс встречается в строках бронирования и имеет журнал запасов;
-бронирование порождает записи в журнале запасов.
+бронирование порождает записи в журнале запасов; дата строки бронирования
+задаётся ссылкой на справочник календарь.
 
 ### DDL для PostgreSQL
 

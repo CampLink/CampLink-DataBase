@@ -46,7 +46,9 @@
       "rel_client_bl",
       "rel_resource_bl",
       "rel_resource_inv",
-      "rel_booking_inv"
+      "rel_booking_inv",
+      "rel_calendar_bl",
+      "rel_calendar_inv"
     ],
     "indexIds": [],
     "memoIds": []
@@ -661,15 +663,15 @@
       "col_bl_date": {
         "id": "col_bl_date",
         "tableId": "tbl_booking_line",
-        "name": "Date",
-        "comment": "Дата",
-        "dataType": "DATE",
+        "name": "CalendarId",
+        "comment": "FK -> Calendar.CalendarId",
+        "dataType": "BIGINT",
         "default": "",
-        "options": 0,
+        "options": 8,
         "ui": {
           "keys": 0,
           "widthName": 60,
-          "widthComment": 60,
+          "widthComment": 160,
           "widthDataType": 60,
           "widthDefault": 60
         },
@@ -841,15 +843,15 @@
       "col_inv_resdate": {
         "id": "col_inv_resdate",
         "tableId": "tbl_inventory",
-        "name": "ReservedDate",
-        "comment": "Зарезервированная дата",
-        "dataType": "DATE",
+        "name": "CalendarId",
+        "comment": "FK -> Calendar.CalendarId (зарезервированная дата)",
+        "dataType": "BIGINT",
         "default": "",
-        "options": 0,
+        "options": 8,
         "ui": {
           "keys": 0,
           "widthName": 75,
-          "widthComment": 139,
+          "widthComment": 200,
           "widthDataType": 60,
           "widthDefault": 60
         },
@@ -1158,6 +1160,62 @@
           "tableId": "tbl_inventory",
           "columnIds": [
             "col_inv_book"
+          ],
+          "x": 0,
+          "y": 15,
+          "direction": 1
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "rel_calendar_bl": {
+        "id": "rel_calendar_bl",
+        "identification": true,
+        "relationshipType": 16,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "tbl_calendar",
+          "columnIds": [
+            "col_cal_id"
+          ],
+          "x": 90,
+          "y": 15,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "tbl_booking_line",
+          "columnIds": [
+            "col_bl_date"
+          ],
+          "x": 0,
+          "y": 15,
+          "direction": 1
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "rel_calendar_inv": {
+        "id": "rel_calendar_inv",
+        "identification": true,
+        "relationshipType": 16,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "tbl_calendar",
+          "columnIds": [
+            "col_cal_id"
+          ],
+          "x": 90,
+          "y": 15,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "tbl_inventory",
+          "columnIds": [
+            "col_inv_resdate"
           ],
           "x": 0,
           "y": 15,

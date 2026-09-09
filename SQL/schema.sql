@@ -68,6 +68,19 @@ CREATE TABLE booking (
 COMMENT ON TABLE booking IS 'Бронирования';
 
 -- ----------------------------------------------------------------------------
+-- Calendar (Календарь)
+-- Создаётся до BookingLine: booking_line ссылается на calendar (calendar_id).
+-- ----------------------------------------------------------------------------
+CREATE TABLE calendar (
+    calendar_id BIGINT   GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    date        DATE     NOT NULL UNIQUE,        -- дата (одна запись на дату)
+    day_type    day_type NOT NULL                -- тип дня
+);
+COMMENT ON TABLE  calendar             IS 'Календарь';
+COMMENT ON COLUMN calendar.date        IS 'Дата';
+COMMENT ON COLUMN calendar.day_type    IS 'Тип дня: working - рабочий, weekend - выходной, holiday - нерабочий';
+
+-- ----------------------------------------------------------------------------
 -- BookingLine (Строки бронирования)
 -- ----------------------------------------------------------------------------
 CREATE TABLE booking_line (
@@ -77,17 +90,18 @@ CREATE TABLE booking_line (
     client_id       BIGINT        NOT NULL,
     quantity        INTEGER       NOT NULL CHECK (quantity > 0),      -- количество
     price           NUMERIC(10,2) NOT NULL CHECK (price >= 0),        -- цена за 1 кол-во
-    date            DATE,                                              -- дата
-    start_time      TIMESTAMP,                                         -- время начала
-    end_time        TIMESTAMP,                                         -- время окончания
+    calendar_id     BIGINT        NOT NULL,                             -- ссылка на справочник календарь
+    start_time      TIMESTAMP,                                          -- время начала
+    end_time        TIMESTAMP,                                          -- время окончания
     CONSTRAINT fk_booking_line_booking  FOREIGN KEY (booking_id)  REFERENCES booking  (booking_id)  ON DELETE CASCADE,
+    CONSTRAINT fk_booking_line_calendar FOREIGN KEY (calendar_id) REFERENCES calendar (calendar_id) ON DELETE RESTRICT,
     CONSTRAINT fk_booking_line_resource FOREIGN KEY (resource_id) REFERENCES resource (resource_id) ON DELETE RESTRICT,
     CONSTRAINT fk_booking_line_client   FOREIGN KEY (client_id)   REFERENCES client   (client_id)   ON DELETE RESTRICT
 );
 COMMENT ON TABLE  booking_line               IS 'Строки бронирования';
 COMMENT ON COLUMN booking_line.quantity      IS 'Количество';
 COMMENT ON COLUMN booking_line.price         IS 'Цена за 1 кол-во';
-COMMENT ON COLUMN booking_line.date          IS 'Дата';
+COMMENT ON COLUMN booking_line.calendar_id   IS 'Ссылка на справочник календарь (дата строки бронирования)';
 COMMENT ON COLUMN booking_line.start_time    IS 'Время начала';
 COMMENT ON COLUMN booking_line.end_time      IS 'Время окончания';
 
@@ -101,13 +115,14 @@ CREATE TABLE inventory (
     movement_type   movement_type NOT NULL,                             -- тип движения
     operation_type  operation_type NOT NULL,                            -- тип операции
     payment_type    payment_type,                                       -- тип оплаты
-    reserved_date   DATE,                                               -- зарезервированная дата
+    calendar_id     BIGINT        NOT NULL,                             -- ссылка на справочник календарь (зарезервированная дата)
     reserved_time   TIMESTAMP,                                          -- зарезервированное время
     event_time      TIMESTAMP,                                          -- время события
     quantity        INTEGER       NOT NULL CHECK (quantity >= 0),       -- количество
     price           NUMERIC(10,2) NOT NULL CHECK (price >= 0),          -- цена за 1 ед. изм.
     CONSTRAINT fk_inventory_resource FOREIGN KEY (resource_id) REFERENCES resource (resource_id) ON DELETE RESTRICT,
-    CONSTRAINT fk_inventory_booking  FOREIGN KEY (booking_id)  REFERENCES booking  (booking_id)  ON DELETE SET NULL
+    CONSTRAINT fk_inventory_booking  FOREIGN KEY (booking_id)  REFERENCES booking  (booking_id)  ON DELETE SET NULL,
+    CONSTRAINT fk_inventory_calendar FOREIGN KEY (calendar_id) REFERENCES calendar (calendar_id) ON DELETE RESTRICT
 );
 COMMENT ON TABLE  inventory                IS 'Запасы (журнал движения)';
 COMMENT ON COLUMN inventory.resource_id    IS 'Ссылка на ресурс';
@@ -115,23 +130,11 @@ COMMENT ON COLUMN inventory.booking_id     IS 'Ссылка на брониро�
 COMMENT ON COLUMN inventory.movement_type  IS 'Тип движения: opening_balance - ввод остатков, incoming - приход, outgoing - расход';
 COMMENT ON COLUMN inventory.operation_type IS 'Тип операции: reserved - резерв, confirmed - подтверждено, purchased - куплено, canceled - отменено';
 COMMENT ON COLUMN inventory.payment_type   IS 'Тип оплаты: cash - нал, cashless - безнал';
-COMMENT ON COLUMN inventory.reserved_date  IS 'Зарезервированная дата';
+COMMENT ON COLUMN inventory.calendar_id    IS 'Ссылка на справочник календарь (зарезервированная дата)';
 COMMENT ON COLUMN inventory.reserved_time  IS 'Зарезервированное время';
 COMMENT ON COLUMN inventory.event_time     IS 'Время события';
 COMMENT ON COLUMN inventory.quantity       IS 'Количество';
 COMMENT ON COLUMN inventory.price          IS 'Цена за 1 ед. изм.';
-
--- ----------------------------------------------------------------------------
--- Calendar (Календарь)
--- ----------------------------------------------------------------------------
-CREATE TABLE calendar (
-    calendar_id BIGINT   GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    date        DATE     NOT NULL UNIQUE,        -- дата (одна запись на дату)
-    day_type    day_type NOT NULL                -- тип дня
-);
-COMMENT ON TABLE  calendar             IS 'Календарь';
-COMMENT ON COLUMN calendar.date        IS 'Дата';
-COMMENT ON COLUMN calendar.day_type    IS 'Тип дня: working - рабочий, weekend - выходной, holiday - нерабочий';
 
 -- ----------------------------------------------------------------------------
 -- 5. Индексы для FK-колонок (ускорение JOIN-ов)
@@ -140,14 +143,15 @@ CREATE INDEX idx_booking_client        ON booking       (client_id);
 CREATE INDEX idx_booking_line_booking  ON booking_line  (booking_id);
 CREATE INDEX idx_booking_line_resource ON booking_line  (resource_id);
 CREATE INDEX idx_booking_line_client   ON booking_line  (client_id);
+CREATE INDEX idx_booking_line_calendar ON booking_line  (calendar_id);
 CREATE INDEX idx_inventory_resource    ON inventory     (resource_id);
 CREATE INDEX idx_inventory_booking     ON inventory     (booking_id);
-CREATE INDEX idx_inventory_resdate     ON inventory     (reserved_date);
+CREATE INDEX idx_inventory_calendar    ON inventory     (calendar_id);
 
 -- Уникальность слота «ввода остатков»: на дату (и час для прокатных) у ресурса —
 -- одна строка ввода остатков.
 CREATE UNIQUE INDEX uq_inventory_opening_balance
-    ON inventory (resource_id, movement_type, reserved_date, reserved_time)
+    ON inventory (resource_id, movement_type, calendar_id, reserved_time)
     WHERE movement_type = 'opening_balance';
 
 -- ----------------------------------------------------------------------------

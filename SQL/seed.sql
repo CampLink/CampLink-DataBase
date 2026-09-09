@@ -24,13 +24,13 @@ INSERT INTO calendar (date, day_type) VALUES
     ('2026-09-13'::date, 'weekend');
 
 -- Ввод остатков (пример): беседка, 2026-09-09, слот 10:00 на 1 час — 2 шт. доступно
-INSERT INTO inventory (resource_id, booking_id, movement_type, operation_type, reserved_date, reserved_time, event_time, quantity, price)
+INSERT INTO inventory (resource_id, booking_id, movement_type, operation_type, calendar_id, reserved_time, event_time, quantity, price)
 VALUES (
     (SELECT resource_id FROM resource WHERE name = 'Беседка «Сосна»'),
     NULL,
     'opening_balance',
     'reserved',
-    '2026-09-09'::date,
+    (SELECT calendar_id FROM calendar WHERE date = '2026-09-09'::date),
     '2026-09-09 10:00'::timestamp,
     '2026-09-09 10:00'::timestamp,
     2,
