@@ -2,10 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/dineug/erd-editor/main/json-schema/schema.json",
   "version": "3.0.0",
   "settings": {
-    "width": 1600,
-    "height": 900,
+    "width": 2000,
+    "height": 2000,
     "scrollTop": 0,
     "scrollLeft": 0,
+    "originX": -4,
+    "originY": -1,
     "zoomLevel": 1,
     "show": 431,
     "database": 4,
@@ -38,7 +40,14 @@
       "tbl_inventory",
       "tbl_calendar"
     ],
-    "relationshipIds": [],
+    "relationshipIds": [
+      "rel_client_booking",
+      "rel_booking_bl",
+      "rel_client_bl",
+      "rel_resource_bl",
+      "rel_resource_inv",
+      "rel_booking_inv"
+    ],
     "indexIds": [],
     "memoIds": []
   },
@@ -61,15 +70,15 @@
           "col_client_cont"
         ],
         "ui": {
-          "x": 60,
-          "y": 80,
+          "x": 42,
+          "y": 324,
           "zIndex": 1,
-          "widthName": 90,
+          "widthName": 60,
           "widthComment": 60,
           "color": ""
         },
         "meta": {
-          "updateAt": 1786300000000,
+          "updateAt": 1788965246373,
           "createAt": 1786300000000
         }
       },
@@ -98,15 +107,15 @@
           "col_res_photo"
         ],
         "ui": {
-          "x": 320,
-          "y": 80,
+          "x": 77,
+          "y": 31,
           "zIndex": 2,
-          "widthName": 90,
+          "widthName": 60,
           "widthComment": 60,
           "color": ""
         },
         "meta": {
-          "updateAt": 1786300000000,
+          "updateAt": 1788965249315,
           "createAt": 1786300000000
         }
       },
@@ -120,18 +129,19 @@
         ],
         "seqColumnIds": [
           "col_book_id",
-          "col_book_client"
+          "col_book_client",
+          "MFVryUvNTcuMYcgGV1JJ5"
         ],
         "ui": {
-          "x": 580,
-          "y": 60,
+          "x": 724,
+          "y": 31,
           "zIndex": 3,
-          "widthName": 90,
-          "widthComment": 60,
+          "widthName": 60,
+          "widthComment": 83,
           "color": ""
         },
         "meta": {
-          "updateAt": 1786300000000,
+          "updateAt": 1788965458058,
           "createAt": 1786300000000
         }
       },
@@ -159,18 +169,20 @@
           "col_bl_price",
           "col_bl_date",
           "col_bl_start",
-          "col_bl_end"
+          "col_bl_end",
+          "g-jlQXlmynOFn-EL5SjUj",
+          "TrfqizApg9cl802hAx55w"
         ],
         "ui": {
-          "x": 820,
-          "y": 120,
+          "x": 686,
+          "y": 298,
           "zIndex": 4,
-          "widthName": 90,
-          "widthComment": 60,
+          "widthName": 67,
+          "widthComment": 126,
           "color": ""
         },
         "meta": {
-          "updateAt": 1786300000000,
+          "updateAt": 1788965637245,
           "createAt": 1786300000000
         }
       },
@@ -205,15 +217,15 @@
           "col_inv_price"
         ],
         "ui": {
-          "x": 1060,
-          "y": 200,
+          "x": 836,
+          "y": 421,
           "zIndex": 5,
-          "widthName": 90,
+          "widthName": 60,
           "widthComment": 60,
           "color": ""
         },
         "meta": {
-          "updateAt": 1786300000000,
+          "updateAt": 1788965241922,
           "createAt": 1786300000000
         }
       },
@@ -235,7 +247,7 @@
           "x": 1350,
           "y": 300,
           "zIndex": 6,
-          "widthName": 90,
+          "widthName": 60,
           "widthComment": 60,
           "color": ""
         },
@@ -256,9 +268,9 @@
         "options": 10,
         "ui": {
           "keys": 1,
-          "widthName": 90,
+          "widthName": 60,
           "widthComment": 60,
-          "widthDataType": 100,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -276,9 +288,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 90,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -296,9 +308,9 @@
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 80,
-          "widthDataType": 100,
+          "widthName": 62,
+          "widthComment": 60,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -316,9 +328,9 @@
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 80,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -336,9 +348,9 @@
         "options": 10,
         "ui": {
           "keys": 1,
-          "widthName": 90,
+          "widthName": 60,
           "widthComment": 60,
-          "widthDataType": 100,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -356,9 +368,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 90,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -376,9 +388,9 @@
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 80,
-          "widthDataType": 100,
+          "widthName": 62,
+          "widthComment": 60,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -396,9 +408,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 220,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 203,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -416,9 +428,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 250,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 214,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -436,9 +448,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 110,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 100,
+          "widthDataType": 81,
           "widthDefault": 60
         },
         "meta": {
@@ -456,9 +468,9 @@
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 80,
-          "widthDataType": 100,
+          "widthName": 61,
+          "widthComment": 60,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -476,9 +488,9 @@
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 100,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 89,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -496,9 +508,9 @@
         "options": 10,
         "ui": {
           "keys": 1,
-          "widthName": 90,
+          "widthName": 60,
           "widthComment": 60,
-          "widthDataType": 100,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -516,9 +528,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 150,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 108,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -536,9 +548,9 @@
         "options": 10,
         "ui": {
           "keys": 1,
-          "widthName": 90,
+          "widthName": 78,
           "widthComment": 60,
-          "widthDataType": 100,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -556,9 +568,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 160,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 135,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -576,9 +588,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 170,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 143,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -596,9 +608,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 150,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 108,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -616,9 +628,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 90,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 66,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -636,9 +648,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 110,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 96,
+          "widthDataType": 81,
           "widthDefault": 60
         },
         "meta": {
@@ -656,9 +668,9 @@
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 70,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -676,9 +688,9 @@
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 100,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 78,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -696,9 +708,9 @@
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 110,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 100,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -716,9 +728,9 @@
         "options": 10,
         "ui": {
           "keys": 1,
-          "widthName": 90,
+          "widthName": 62,
           "widthComment": 60,
-          "widthDataType": 100,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -736,9 +748,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 170,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 143,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -756,9 +768,9 @@
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 190,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 187,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -776,9 +788,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 260,
-          "widthDataType": 100,
+          "widthName": 84,
+          "widthComment": 259,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -796,9 +808,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 300,
-          "widthDataType": 100,
+          "widthName": 80,
+          "widthComment": 345,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -816,9 +828,9 @@
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 150,
-          "widthDataType": 100,
+          "widthName": 72,
+          "widthComment": 137,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -836,9 +848,9 @@
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 120,
-          "widthDataType": 100,
+          "widthName": 75,
+          "widthComment": 139,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -856,9 +868,9 @@
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 130,
-          "widthDataType": 100,
+          "widthName": 76,
+          "widthComment": 151,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -876,9 +888,9 @@
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 100,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 86,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -896,9 +908,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 90,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 66,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -916,9 +928,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 110,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 100,
+          "widthDataType": 81,
           "widthDefault": 60
         },
         "meta": {
@@ -936,9 +948,9 @@
         "options": 10,
         "ui": {
           "keys": 1,
-          "widthName": 90,
+          "widthName": 60,
           "widthComment": 60,
-          "widthDataType": 100,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -956,9 +968,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 70,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 60,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -976,9 +988,9 @@
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 90,
-          "widthComment": 230,
-          "widthDataType": 100,
+          "widthName": 60,
+          "widthComment": 267,
+          "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
@@ -987,453 +999,178 @@
         }
       }
     },
-    "relationshipEntities": {},
+    "relationshipEntities": {
+      "rel_client_booking": {
+        "id": "rel_client_booking",
+        "identification": true,
+        "relationshipType": 16,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "tbl_client",
+          "columnIds": [
+            "col_client_id"
+          ],
+          "x": 90,
+          "y": 15,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "tbl_booking",
+          "columnIds": [
+            "col_book_client"
+          ],
+          "x": 0,
+          "y": 15,
+          "direction": 1
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "rel_booking_bl": {
+        "id": "rel_booking_bl",
+        "identification": true,
+        "relationshipType": 16,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "tbl_booking",
+          "columnIds": [
+            "col_book_id"
+          ],
+          "x": 90,
+          "y": 15,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "tbl_booking_line",
+          "columnIds": [
+            "col_bl_book"
+          ],
+          "x": 0,
+          "y": 15,
+          "direction": 1
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "rel_client_bl": {
+        "id": "rel_client_bl",
+        "identification": true,
+        "relationshipType": 16,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "tbl_client",
+          "columnIds": [
+            "col_client_id"
+          ],
+          "x": 90,
+          "y": 15,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "tbl_booking_line",
+          "columnIds": [
+            "col_bl_client"
+          ],
+          "x": 0,
+          "y": 15,
+          "direction": 1
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "rel_resource_bl": {
+        "id": "rel_resource_bl",
+        "identification": true,
+        "relationshipType": 16,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "tbl_resource",
+          "columnIds": [
+            "col_res_id"
+          ],
+          "x": 90,
+          "y": 15,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "tbl_booking_line",
+          "columnIds": [
+            "col_bl_res"
+          ],
+          "x": 0,
+          "y": 15,
+          "direction": 1
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "rel_resource_inv": {
+        "id": "rel_resource_inv",
+        "identification": true,
+        "relationshipType": 16,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "tbl_resource",
+          "columnIds": [
+            "col_res_id"
+          ],
+          "x": 90,
+          "y": 15,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "tbl_inventory",
+          "columnIds": [
+            "col_inv_res"
+          ],
+          "x": 0,
+          "y": 15,
+          "direction": 1
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "rel_booking_inv": {
+        "id": "rel_booking_inv",
+        "identification": true,
+        "relationshipType": 16,
+        "startRelationshipType": 2,
+        "start": {
+          "tableId": "tbl_booking",
+          "columnIds": [
+            "col_book_id"
+          ],
+          "x": 90,
+          "y": 15,
+          "direction": 2
+        },
+        "end": {
+          "tableId": "tbl_inventory",
+          "columnIds": [
+            "col_inv_book"
+          ],
+          "x": 0,
+          "y": 15,
+          "direction": 1
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      }
+    },
     "indexEntities": {},
     "indexColumnEntities": {},
     "memoEntities": {}
-  },
-  "lww": {
-    "tbl_client": [
-      "tableEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000
-      }
-    ],
-    "col_client_id": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "options(primaryKey)": 1786300000000
-      }
-    ],
-    "col_client_name": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_client_desc": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_client_cont": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "tbl_resource": [
-      "tableEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000
-      }
-    ],
-    "col_res_id": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "options(primaryKey)": 1786300000000
-      }
-    ],
-    "col_res_name": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_res_desc": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_res_itemtype": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_res_unittype": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_res_price": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_res_mult": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_res_photo": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "tbl_booking": [
-      "tableEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000
-      }
-    ],
-    "col_book_id": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "options(primaryKey)": 1786300000000
-      }
-    ],
-    "col_book_client": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "tbl_booking_line": [
-      "tableEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000
-      }
-    ],
-    "col_bl_id": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "options(primaryKey)": 1786300000000
-      }
-    ],
-    "col_bl_book": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_bl_res": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_bl_client": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_bl_qty": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_bl_price": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_bl_date": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_bl_start": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_bl_end": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "tbl_inventory": [
-      "tableEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000
-      }
-    ],
-    "col_inv_id": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "options(primaryKey)": 1786300000000
-      }
-    ],
-    "col_inv_res": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_inv_book": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_inv_mvmt": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_inv_op": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_inv_pay": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_inv_resdate": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_inv_restime": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_inv_event": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_inv_qty": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_inv_price": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "tbl_calendar": [
-      "tableEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000
-      }
-    ],
-    "col_cal_id": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "options(primaryKey)": 1786300000000
-      }
-    ],
-    "col_cal_date": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ],
-    "col_cal_day": [
-      "tableColumnEntities",
-      1786300000000,
-      -1,
-      {
-        "name": 1786300000000,
-        "dataType": 1786300000000,
-        "options(notNull)": 1786300000000,
-        "comment": 1786300000000
-      }
-    ]
   }
 }

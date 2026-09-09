@@ -204,3 +204,17 @@ FK-связи (рёбра ERD) отмечены колонками со ссыл
 Семантика: один клиент — много бронирований; бронирование — много строк
 бронирования; ресурс встречается в строках бронирования и имеет журнал запасов;
 бронирование порождает записи в журнале запасов.
+
+### DDL для PostgreSQL
+
+Исполняемая схема для PostgreSQL сгенерирована по ER-диаграмме: `SQL/schema.sql`
+(INSERT-пример данных — `SQL/seed.sql`). Решения при генерации:
+
+- PK — `BIGINT GENERATED ALWAYS AS IDENTITY`;
+- enum-поля (`ItemType`, `UnitType`, `MovementType`, `OperationType`,
+  `PaymentType`, `DayType`) — нативные типы PostgreSQL `ENUM`;
+- схема — `public`;
+- FK-колонки покрыты индексами; `Calendar.date` — `UNIQUE`;
+  слот «ввода остатков» — частичный уникальный индекс;
+- поведение `ON DELETE`: CASCADE для строк бронирования, RESTRICT для ссылок
+  на клиента/ресурс, SET NULL для `Inventory.booking_id`.
