@@ -2,8 +2,8 @@
   "$schema": "https://raw.githubusercontent.com/dineug/erd-editor/main/json-schema/schema.json",
   "version": "3.0.0",
   "settings": {
-    "width": 2000,
-    "height": 2000,
+    "width": 1600,
+    "height": 900,
     "scrollTop": 0,
     "scrollLeft": 0,
     "zoomLevel": 1,
@@ -31,10 +31,12 @@
   },
   "doc": {
     "tableIds": [
-      "NIfHCcFi9uzRZwOS7x2Y0",
-      "tYdB4IzL-y5xWyVxNsuFU",
-      "qvEh1Mg8Qbc0KR-IRKONq",
-      "d0e9yfp1swCrUHzdjO7OT"
+      "tbl_client",
+      "tbl_resource",
+      "tbl_booking",
+      "tbl_booking_line",
+      "tbl_inventory",
+      "tbl_calendar"
     ],
     "relationshipIds": [],
     "indexIds": [],
@@ -42,194 +44,946 @@
   },
   "collections": {
     "tableEntities": {
-      "NIfHCcFi9uzRZwOS7x2Y0": {
-        "id": "NIfHCcFi9uzRZwOS7x2Y0",
-        "name": "UserAccount",
-        "comment": "",
-        "columnIds": [],
-        "seqColumnIds": [],
-        "ui": {
-          "x": 239,
-          "y": 129,
-          "zIndex": 2,
-          "widthName": 69,
-          "widthComment": 60,
-          "color": ""
-        },
-        "meta": {
-          "updateAt": 1735918724416,
-          "createAt": 1735918684439
-        }
-      },
-      "tYdB4IzL-y5xWyVxNsuFU": {
-        "id": "tYdB4IzL-y5xWyVxNsuFU",
-        "name": "FixedAsset",
-        "comment": "",
+      "tbl_client": {
+        "id": "tbl_client",
+        "name": "Client",
+        "comment": "Клиенты",
         "columnIds": [
-          "gCihP7cKWDIsDA_IbmdnG",
-          "4bwTLtRR5qkruS0QWxZXX",
-          "vIo2LVyOJuqrUUtJkGZJ7",
-          "e-HOBqYmobF_g1kWk5L5R",
-          "ZCynbDkJjrG_s_1U4Y-yF"
+          "col_client_id",
+          "col_client_name",
+          "col_client_desc",
+          "col_client_cont"
         ],
         "seqColumnIds": [
-          "gCihP7cKWDIsDA_IbmdnG",
-          "4bwTLtRR5qkruS0QWxZXX",
-          "vIo2LVyOJuqrUUtJkGZJ7",
-          "e-HOBqYmobF_g1kWk5L5R",
-          "ZCynbDkJjrG_s_1U4Y-yF"
+          "col_client_id",
+          "col_client_name",
+          "col_client_desc",
+          "col_client_cont"
         ],
         "ui": {
-          "x": 680,
-          "y": 73,
-          "zIndex": 10,
-          "widthName": 60,
+          "x": 60,
+          "y": 80,
+          "zIndex": 1,
+          "widthName": 90,
           "widthComment": 60,
           "color": ""
         },
         "meta": {
-          "updateAt": 1735919324080,
-          "createAt": 1735918696394
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
         }
       },
-      "qvEh1Mg8Qbc0KR-IRKONq": {
-        "id": "qvEh1Mg8Qbc0KR-IRKONq",
-        "name": "Location",
-        "comment": "",
-        "columnIds": [],
-        "seqColumnIds": [],
+      "tbl_resource": {
+        "id": "tbl_resource",
+        "name": "Resource",
+        "comment": "Ресурсы",
+        "columnIds": [
+          "col_res_id",
+          "col_res_name",
+          "col_res_desc",
+          "col_res_itemtype",
+          "col_res_unittype",
+          "col_res_price",
+          "col_res_mult",
+          "col_res_photo"
+        ],
+        "seqColumnIds": [
+          "col_res_id",
+          "col_res_name",
+          "col_res_desc",
+          "col_res_itemtype",
+          "col_res_unittype",
+          "col_res_price",
+          "col_res_mult",
+          "col_res_photo"
+        ],
         "ui": {
-          "x": 1167,
-          "y": 245,
-          "zIndex": 18,
-          "widthName": 60,
+          "x": 320,
+          "y": 80,
+          "zIndex": 2,
+          "widthName": 90,
           "widthComment": 60,
           "color": ""
         },
         "meta": {
-          "updateAt": 1735918905473,
-          "createAt": 1735918727831
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
         }
       },
-      "d0e9yfp1swCrUHzdjO7OT": {
-        "id": "d0e9yfp1swCrUHzdjO7OT",
-        "name": "",
-        "comment": "",
-        "columnIds": [],
-        "seqColumnIds": [],
+      "tbl_booking": {
+        "id": "tbl_booking",
+        "name": "Booking",
+        "comment": "Бронирования",
+        "columnIds": [
+          "col_book_id",
+          "col_book_client"
+        ],
+        "seqColumnIds": [
+          "col_book_id",
+          "col_book_client"
+        ],
         "ui": {
-          "x": 200,
-          "y": 100,
-          "zIndex": 73,
-          "widthName": 60,
+          "x": 580,
+          "y": 60,
+          "zIndex": 3,
+          "widthName": 90,
           "widthComment": 60,
           "color": ""
         },
         "meta": {
-          "updateAt": 1735919325258,
-          "createAt": 1735919325258
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "tbl_booking_line": {
+        "id": "tbl_booking_line",
+        "name": "BookingLine",
+        "comment": "Строки бронирования",
+        "columnIds": [
+          "col_bl_id",
+          "col_bl_book",
+          "col_bl_res",
+          "col_bl_client",
+          "col_bl_qty",
+          "col_bl_price",
+          "col_bl_date",
+          "col_bl_start",
+          "col_bl_end"
+        ],
+        "seqColumnIds": [
+          "col_bl_id",
+          "col_bl_book",
+          "col_bl_res",
+          "col_bl_client",
+          "col_bl_qty",
+          "col_bl_price",
+          "col_bl_date",
+          "col_bl_start",
+          "col_bl_end"
+        ],
+        "ui": {
+          "x": 820,
+          "y": 120,
+          "zIndex": 4,
+          "widthName": 90,
+          "widthComment": 60,
+          "color": ""
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "tbl_inventory": {
+        "id": "tbl_inventory",
+        "name": "Inventory",
+        "comment": "Запасы",
+        "columnIds": [
+          "col_inv_id",
+          "col_inv_res",
+          "col_inv_book",
+          "col_inv_mvmt",
+          "col_inv_op",
+          "col_inv_pay",
+          "col_inv_resdate",
+          "col_inv_restime",
+          "col_inv_event",
+          "col_inv_qty",
+          "col_inv_price"
+        ],
+        "seqColumnIds": [
+          "col_inv_id",
+          "col_inv_res",
+          "col_inv_book",
+          "col_inv_mvmt",
+          "col_inv_op",
+          "col_inv_pay",
+          "col_inv_resdate",
+          "col_inv_restime",
+          "col_inv_event",
+          "col_inv_qty",
+          "col_inv_price"
+        ],
+        "ui": {
+          "x": 1060,
+          "y": 200,
+          "zIndex": 5,
+          "widthName": 90,
+          "widthComment": 60,
+          "color": ""
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "tbl_calendar": {
+        "id": "tbl_calendar",
+        "name": "Calendar",
+        "comment": "Календарь",
+        "columnIds": [
+          "col_cal_id",
+          "col_cal_date",
+          "col_cal_day"
+        ],
+        "seqColumnIds": [
+          "col_cal_id",
+          "col_cal_date",
+          "col_cal_day"
+        ],
+        "ui": {
+          "x": 1350,
+          "y": 300,
+          "zIndex": 6,
+          "widthName": 90,
+          "widthComment": 60,
+          "color": ""
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
         }
       }
     },
     "tableColumnEntities": {
-      "gCihP7cKWDIsDA_IbmdnG": {
-        "id": "gCihP7cKWDIsDA_IbmdnG",
-        "tableId": "tYdB4IzL-y5xWyVxNsuFU",
-        "name": "AssetId",
+      "col_client_id": {
+        "id": "col_client_id",
+        "tableId": "tbl_client",
+        "name": "ClientId",
         "comment": "",
         "dataType": "BIGINT",
         "default": "",
         "options": 10,
         "ui": {
           "keys": 1,
-          "widthName": 60,
+          "widthName": 90,
           "widthComment": 60,
-          "widthDataType": 60,
+          "widthDataType": 100,
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1735919292968,
-          "createAt": 1735919194694
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
         }
       },
-      "4bwTLtRR5qkruS0QWxZXX": {
-        "id": "4bwTLtRR5qkruS0QWxZXX",
-        "tableId": "tYdB4IzL-y5xWyVxNsuFU",
-        "name": "DealType",
-        "comment": "Enum: 0 - rent.  1 - sale",
+      "col_client_name": {
+        "id": "col_client_name",
+        "tableId": "tbl_client",
+        "name": "Name",
+        "comment": "Название",
+        "dataType": "VARCHAR",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 90,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_client_desc": {
+        "id": "col_client_desc",
+        "tableId": "tbl_client",
+        "name": "Description",
+        "comment": "Описание",
+        "dataType": "VARCHAR",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 80,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_client_cont": {
+        "id": "col_client_cont",
+        "tableId": "tbl_client",
+        "name": "Contacts",
+        "comment": "Контакты",
+        "dataType": "VARCHAR",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 80,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_res_id": {
+        "id": "col_res_id",
+        "tableId": "tbl_resource",
+        "name": "ResourceId",
+        "comment": "",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 10,
+        "ui": {
+          "keys": 1,
+          "widthName": 90,
+          "widthComment": 60,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_res_name": {
+        "id": "col_res_name",
+        "tableId": "tbl_resource",
+        "name": "Name",
+        "comment": "Название",
+        "dataType": "VARCHAR",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 90,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_res_desc": {
+        "id": "col_res_desc",
+        "tableId": "tbl_resource",
+        "name": "Description",
+        "comment": "Описание",
+        "dataType": "VARCHAR",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 80,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_res_itemtype": {
+        "id": "col_res_itemtype",
+        "tableId": "tbl_resource",
+        "name": "ItemType",
+        "comment": "Enum: 0 - поштучный, 1 - прокатный",
         "dataType": "INT",
         "default": "",
         "options": 8,
         "ui": {
           "keys": 0,
-          "widthName": 60,
-          "widthComment": 124,
-          "widthDataType": 60,
+          "widthName": 90,
+          "widthComment": 220,
+          "widthDataType": 100,
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1735919268129,
-          "createAt": 1735919195106
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
         }
       },
-      "vIo2LVyOJuqrUUtJkGZJ7": {
-        "id": "vIo2LVyOJuqrUUtJkGZJ7",
-        "tableId": "tYdB4IzL-y5xWyVxNsuFU",
-        "name": "",
-        "comment": "",
-        "dataType": "",
+      "col_res_unittype": {
+        "id": "col_res_unittype",
+        "tableId": "tbl_resource",
+        "name": "UnitType",
+        "comment": "Enum: 0 - штука, 1 - кг, 2 - литр, 3 - час",
+        "dataType": "INT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 250,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_res_price": {
+        "id": "col_res_price",
+        "tableId": "tbl_resource",
+        "name": "Price",
+        "comment": "Цена за 1 ед. изм.",
+        "dataType": "DECIMAL(10,2)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 110,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_res_mult": {
+        "id": "col_res_mult",
+        "tableId": "tbl_resource",
+        "name": "Multiplicity",
+        "comment": "Кратность",
+        "dataType": "INT",
         "default": "",
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 60,
-          "widthComment": 60,
-          "widthDataType": 60,
+          "widthName": 90,
+          "widthComment": 80,
+          "widthDataType": 100,
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1735919195260,
-          "createAt": 1735919195260
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
         }
       },
-      "e-HOBqYmobF_g1kWk5L5R": {
-        "id": "e-HOBqYmobF_g1kWk5L5R",
-        "tableId": "tYdB4IzL-y5xWyVxNsuFU",
-        "name": "",
-        "comment": "",
-        "dataType": "",
+      "col_res_photo": {
+        "id": "col_res_photo",
+        "tableId": "tbl_resource",
+        "name": "PhotoUrl",
+        "comment": "Ссылка на фото",
+        "dataType": "VARCHAR",
         "default": "",
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 60,
-          "widthComment": 60,
-          "widthDataType": 60,
+          "widthName": 90,
+          "widthComment": 100,
+          "widthDataType": 100,
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1735919195405,
-          "createAt": 1735919195405
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
         }
       },
-      "ZCynbDkJjrG_s_1U4Y-yF": {
-        "id": "ZCynbDkJjrG_s_1U4Y-yF",
-        "tableId": "tYdB4IzL-y5xWyVxNsuFU",
-        "name": "",
+      "col_book_id": {
+        "id": "col_book_id",
+        "tableId": "tbl_booking",
+        "name": "BookingId",
         "comment": "",
-        "dataType": "",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 10,
+        "ui": {
+          "keys": 1,
+          "widthName": 90,
+          "widthComment": 60,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_book_client": {
+        "id": "col_book_client",
+        "tableId": "tbl_booking",
+        "name": "ClientId",
+        "comment": "FK -> Client.ClientId",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 150,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_bl_id": {
+        "id": "col_bl_id",
+        "tableId": "tbl_booking_line",
+        "name": "BookingLineId",
+        "comment": "",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 10,
+        "ui": {
+          "keys": 1,
+          "widthName": 90,
+          "widthComment": 60,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_bl_book": {
+        "id": "col_bl_book",
+        "tableId": "tbl_booking_line",
+        "name": "BookingId",
+        "comment": "FK -> Booking.BookingId",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 160,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_bl_res": {
+        "id": "col_bl_res",
+        "tableId": "tbl_booking_line",
+        "name": "ResourceId",
+        "comment": "FK -> Resource.ResourceId",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 170,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_bl_client": {
+        "id": "col_bl_client",
+        "tableId": "tbl_booking_line",
+        "name": "ClientId",
+        "comment": "FK -> Client.ClientId",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 150,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_bl_qty": {
+        "id": "col_bl_qty",
+        "tableId": "tbl_booking_line",
+        "name": "Quantity",
+        "comment": "Количество",
+        "dataType": "INT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 90,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_bl_price": {
+        "id": "col_bl_price",
+        "tableId": "tbl_booking_line",
+        "name": "Price",
+        "comment": "Цена за 1 кол-во",
+        "dataType": "DECIMAL(10,2)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 110,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_bl_date": {
+        "id": "col_bl_date",
+        "tableId": "tbl_booking_line",
+        "name": "Date",
+        "comment": "Дата",
+        "dataType": "DATE",
         "default": "",
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 60,
-          "widthComment": 60,
-          "widthDataType": 60,
+          "widthName": 90,
+          "widthComment": 70,
+          "widthDataType": 100,
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1735919195574,
-          "createAt": 1735919195574
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_bl_start": {
+        "id": "col_bl_start",
+        "tableId": "tbl_booking_line",
+        "name": "StartTime",
+        "comment": "Время начала",
+        "dataType": "DATETIME",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 100,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_bl_end": {
+        "id": "col_bl_end",
+        "tableId": "tbl_booking_line",
+        "name": "EndTime",
+        "comment": "Время окончания",
+        "dataType": "DATETIME",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 110,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_inv_id": {
+        "id": "col_inv_id",
+        "tableId": "tbl_inventory",
+        "name": "InventoryId",
+        "comment": "",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 10,
+        "ui": {
+          "keys": 1,
+          "widthName": 90,
+          "widthComment": 60,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_inv_res": {
+        "id": "col_inv_res",
+        "tableId": "tbl_inventory",
+        "name": "ResourceId",
+        "comment": "FK -> Resource.ResourceId",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 170,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_inv_book": {
+        "id": "col_inv_book",
+        "tableId": "tbl_inventory",
+        "name": "BookingId",
+        "comment": "FK -> Booking.BookingId (nullable)",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 190,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_inv_mvmt": {
+        "id": "col_inv_mvmt",
+        "tableId": "tbl_inventory",
+        "name": "MovementType",
+        "comment": "Enum: 0 - ввод остатков, 1 - приход, 2 - расход",
+        "dataType": "INT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 260,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_inv_op": {
+        "id": "col_inv_op",
+        "tableId": "tbl_inventory",
+        "name": "OperationType",
+        "comment": "Enum: 0 - резерв, 1 - подтверждено, 2 - куплено, 3 - отменено",
+        "dataType": "INT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 300,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_inv_pay": {
+        "id": "col_inv_pay",
+        "tableId": "tbl_inventory",
+        "name": "PaymentType",
+        "comment": "Enum: 0 - нал, 1 - безнал",
+        "dataType": "INT",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 150,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_inv_resdate": {
+        "id": "col_inv_resdate",
+        "tableId": "tbl_inventory",
+        "name": "ReservedDate",
+        "comment": "Зарезервированная дата",
+        "dataType": "DATE",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 120,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_inv_restime": {
+        "id": "col_inv_restime",
+        "tableId": "tbl_inventory",
+        "name": "ReservedTime",
+        "comment": "Зарезервированное время",
+        "dataType": "DATETIME",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 130,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_inv_event": {
+        "id": "col_inv_event",
+        "tableId": "tbl_inventory",
+        "name": "EventTime",
+        "comment": "Время события",
+        "dataType": "DATETIME",
+        "default": "",
+        "options": 0,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 100,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_inv_qty": {
+        "id": "col_inv_qty",
+        "tableId": "tbl_inventory",
+        "name": "Quantity",
+        "comment": "Количество",
+        "dataType": "INT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 90,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_inv_price": {
+        "id": "col_inv_price",
+        "tableId": "tbl_inventory",
+        "name": "Price",
+        "comment": "Цена за 1 ед. изм.",
+        "dataType": "DECIMAL(10,2)",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 110,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_cal_id": {
+        "id": "col_cal_id",
+        "tableId": "tbl_calendar",
+        "name": "CalendarId",
+        "comment": "",
+        "dataType": "BIGINT",
+        "default": "",
+        "options": 10,
+        "ui": {
+          "keys": 1,
+          "widthName": 90,
+          "widthComment": 60,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_cal_date": {
+        "id": "col_cal_date",
+        "tableId": "tbl_calendar",
+        "name": "Date",
+        "comment": "Дата",
+        "dataType": "DATE",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 70,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
+        }
+      },
+      "col_cal_day": {
+        "id": "col_cal_day",
+        "tableId": "tbl_calendar",
+        "name": "DayType",
+        "comment": "Enum: 0 - рабочий, 1 - выходной, 2 - нерабочий",
+        "dataType": "INT",
+        "default": "",
+        "options": 8,
+        "ui": {
+          "keys": 0,
+          "widthName": 90,
+          "widthComment": 230,
+          "widthDataType": 100,
+          "widthDefault": 60
+        },
+        "meta": {
+          "updateAt": 1786300000000,
+          "createAt": 1786300000000
         }
       }
     },
@@ -239,75 +993,447 @@
     "memoEntities": {}
   },
   "lww": {
-    "NIfHCcFi9uzRZwOS7x2Y0": [
+    "tbl_client": [
       "tableEntities",
-      1735918684435,
+      1786300000000,
       -1,
       {
-        "name": 1735918692857
+        "name": 1786300000000
       }
     ],
-    "tYdB4IzL-y5xWyVxNsuFU": [
+    "col_client_id": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "options(primaryKey)": 1786300000000
+      }
+    ],
+    "col_client_name": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_client_desc": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_client_cont": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "tbl_resource": [
       "tableEntities",
-      1735918696393,
+      1786300000000,
       -1,
       {
-        "name": 1735918719617
+        "name": 1786300000000
       }
     ],
-    "qvEh1Mg8Qbc0KR-IRKONq": [
+    "col_res_id": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "options(primaryKey)": 1786300000000
+      }
+    ],
+    "col_res_name": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_res_desc": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_res_itemtype": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_res_unittype": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_res_price": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_res_mult": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_res_photo": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "tbl_booking": [
       "tableEntities",
-      1735918727831,
+      1786300000000,
       -1,
       {
-        "name": 1735918733552
+        "name": 1786300000000
       }
     ],
-    "gCihP7cKWDIsDA_IbmdnG": [
+    "col_book_id": [
       "tableColumnEntities",
-      1735919194693,
+      1786300000000,
       -1,
       {
-        "name": 1735919277336,
-        "dataType": 1735919288128,
-        "options(notNull)": 1735919290504,
-        "options(primaryKey)": 1735919292968
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "options(primaryKey)": 1786300000000
       }
     ],
-    "4bwTLtRR5qkruS0QWxZXX": [
+    "col_book_client": [
       "tableColumnEntities",
-      1735919195106,
+      1786300000000,
       -1,
       {
-        "name": 1735919219177,
-        "dataType": 1735919236683,
-        "options(notNull)": 1735919239555,
-        "comment": 1735919268128
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
       }
     ],
-    "vIo2LVyOJuqrUUtJkGZJ7": [
-      "tableColumnEntities",
-      1735919195259,
-      -1,
-      {}
-    ],
-    "e-HOBqYmobF_g1kWk5L5R": [
-      "tableColumnEntities",
-      1735919195404,
-      -1,
-      {}
-    ],
-    "ZCynbDkJjrG_s_1U4Y-yF": [
-      "tableColumnEntities",
-      1735919195573,
-      -1,
-      {}
-    ],
-    "d0e9yfp1swCrUHzdjO7OT": [
+    "tbl_booking_line": [
       "tableEntities",
-      1735919325257,
+      1786300000000,
       -1,
-      {}
+      {
+        "name": 1786300000000
+      }
+    ],
+    "col_bl_id": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "options(primaryKey)": 1786300000000
+      }
+    ],
+    "col_bl_book": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_bl_res": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_bl_client": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_bl_qty": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_bl_price": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_bl_date": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_bl_start": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_bl_end": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "tbl_inventory": [
+      "tableEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000
+      }
+    ],
+    "col_inv_id": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "options(primaryKey)": 1786300000000
+      }
+    ],
+    "col_inv_res": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_inv_book": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_inv_mvmt": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_inv_op": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_inv_pay": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_inv_resdate": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_inv_restime": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_inv_event": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_inv_qty": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_inv_price": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "tbl_calendar": [
+      "tableEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000
+      }
+    ],
+    "col_cal_id": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "options(primaryKey)": 1786300000000
+      }
+    ],
+    "col_cal_date": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
+    ],
+    "col_cal_day": [
+      "tableColumnEntities",
+      1786300000000,
+      -1,
+      {
+        "name": 1786300000000,
+        "dataType": 1786300000000,
+        "options(notNull)": 1786300000000,
+        "comment": 1786300000000
+      }
     ]
   }
 }
