@@ -157,13 +157,13 @@ CREATE UNIQUE INDEX uq_inventory_opening_balance
 -- ----------------------------------------------------------------------------
 -- 6. (Опционально) роль приложения: права DML без DDL
 -- ----------------------------------------------------------------------------
--- CREATE ROLE camplink_app LOGIN PASSWORD 'change_me';
--- GRANT USAGE    ON SCHEMA public                    TO camplink_app;
--- GRANT SELECT, INSERT, UPDATE, DELETE
---       ON ALL TABLES IN SCHEMA public               TO camplink_app;
--- GRANT USAGE, SELECT
---       ON ALL SEQUENCES IN SCHEMA public            TO camplink_app;
--- ALTER DEFAULT PRIVILEGES IN SCHEMA public
---       GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO camplink_app;
--- ALTER DEFAULT PRIVILEGES IN SCHEMA public
---       GRANT USAGE, SELECT ON SEQUENCES             TO camplink_app;
+CREATE ROLE camplink_app LOGIN PASSWORD 'change_me';
+ GRANT USAGE    ON SCHEMA public                    TO camplink_app;
+ GRANT SELECT, INSERT, UPDATE, DELETE
+       ON ALL TABLES IN SCHEMA public               TO camplink_app;
+ GRANT USAGE, SELECT
+       ON ALL SEQUENCES IN SCHEMA public            TO camplink_app;
+ ALTER DEFAULT PRIVILEGES IN SCHEMA public
+       GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO camplink_app;
+ ALTER DEFAULT PRIVILEGES IN SCHEMA public
+       GRANT USAGE, SELECT ON SEQUENCES             TO camplink_app;
