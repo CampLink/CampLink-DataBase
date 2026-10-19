@@ -1,4 +1,17 @@
-## Схема БД (актуальное состояние)
+## Суточный учёт
+
+Ресурс с единицей «сутки» учитывается одной записью на дату: как ввод остатков,
+так и расход по каждой позиции бронирования. `ReservedTime` отсутствует; цена
+взимается один раз за сутки, кратность равна 1. Для нескольких дат создаются
+отдельные позиции бронирования. Переход существующей базы описан в
+[инструкции миграций](SQL/migrations/README.md).
+
+Исполняемая PostgreSQL-схема находится в `SQL/schema.sql`. ERD и drawio —
+проектные представления: новую прикладную связь `Inventory.BookingLineId` и
+необязательные времена суточных позиций нужно отразить в редакторе диаграмм.
+В SQL новая связь с позицией реализована без внешнего ключа.
+
+## Схема БД (проектное представление)
 
 Источник истины — `Scheme/DatabaseScheme.erd.json` (ERD Editor). Схема отражает
 доменные таблицы DWH из `Scheme/camplink.drawio`. Таблицы и колонки — на
@@ -15,7 +28,7 @@
 - `Name` VARCHAR — название
 - `Description` VARCHAR — описание
 - `ItemType` INT — тип товара: поштучный / прокатный
-- `UnitType` INT — ед. изм.: штука / кг / литр / час
+- `UnitType` INT — ед. изм.: штука / кг / литр / час / сутки
 - `Price` DECIMAL(10,2) — цена за 1 ед. изм.
 - `Multiplicity` INT — кратность
 - `PhotoUrl` VARCHAR — ссылка на фото
@@ -32,19 +45,20 @@
 - `Quantity` INT — количество
 - `Price` DECIMAL(10,2) — цена за 1 кол-во
 - `CalendarId` BIGINT FK → `Calendar.CalendarId` — дата строки бронирования
-- `StartTime` DATETIME — время начала
-- `EndTime` DATETIME — время окончания
+- `StartTime` TIMESTAMPTZ nullable — время начала; NULL у суточной позиции
+- `EndTime` TIMESTAMPTZ nullable — время окончания; NULL у суточной позиции
 
 ### Inventory (Запасы, журнал движения)
 - `InventoryId` BIGINT PK
 - `ResourceId` BIGINT FK → `Resource.ResourceId`
 - `BookingId` BIGINT FK → `Booking.BookingId` (nullable — пусто при «вводе остатков»)
+- `BookingLineId` BIGINT nullable — прикладная ссылка на позицию бронирования (без FK)
 - `MovementType` INT — тип движения: ввод остатков / приход / расход
 - `OperationType` INT — тип операции: резерв / подтверждено / куплено / отменено
 - `PaymentType` INT — тип оплаты: нал / безнал
 - `CalendarId` BIGINT FK → `Calendar.CalendarId` — зарезервированная дата
-- `ReservedTime` DATETIME — зарезервированное время
-- `EventTime` DATETIME — время события
+- `ReservedTime` TIMESTAMPTZ nullable — час; NULL означает учёт на весь день
+- `EventTime` TIMESTAMPTZ — время события в UTC
 - `Quantity` INT — количество
 - `Price` DECIMAL(10,2) — цена за 1 ед. изм.
 

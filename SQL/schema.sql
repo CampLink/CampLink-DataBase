@@ -14,7 +14,7 @@
 -- Соответствуют INT-полям ERD, закодированным enum'ом (значения см. в комментариях).
 -- ----------------------------------------------------------------------------
 CREATE TYPE resource_item_type AS ENUM ('piece', 'rent');        -- поштучный / прокатный
-CREATE TYPE unit_type          AS ENUM ('piece', 'kg', 'liter', 'hour'); -- штука / кг / литр / час
+CREATE TYPE unit_type          AS ENUM ('piece', 'kg', 'liter', 'hour', 'day'); -- штука / кг / литр / час / сутки
 CREATE TYPE movement_type      AS ENUM ('opening_balance', 'incoming', 'outgoing'); -- ввод остатков / приход / расход
 CREATE TYPE operation_type     AS ENUM ('reserved', 'confirmed', 'purchased', 'canceled'); -- резерв / подтверждено / куплено / отменено
 CREATE TYPE payment_type       AS ENUM ('cash', 'cashless');     -- нал / безнал
@@ -51,7 +51,7 @@ COMMENT ON TABLE  resource               IS 'Ресурсы';
 COMMENT ON COLUMN resource.name          IS 'Название';
 COMMENT ON COLUMN resource.description   IS 'Описание';
 COMMENT ON COLUMN resource.item_type     IS 'Тип товара: piece - поштучный, rent - прокатный';
-COMMENT ON COLUMN resource.unit_type     IS 'Ед. изм.: piece - штука, kg - кг, liter - литр, hour - час';
+COMMENT ON COLUMN resource.unit_type     IS 'Ед. изм.: piece - штука, kg - кг, liter - литр, hour - час, day - сутки';
 COMMENT ON COLUMN resource.price         IS 'Цена за 1 ед. изм.';
 COMMENT ON COLUMN resource.multiplicity  IS 'Кратность';
 COMMENT ON COLUMN resource.photo_url     IS 'Ссылка на фото';
@@ -91,8 +91,8 @@ CREATE TABLE booking_line (
     quantity        INTEGER       NOT NULL CHECK (quantity > 0),      -- количество
     price           NUMERIC(10,2) NOT NULL CHECK (price >= 0),        -- цена за 1 кол-во
     calendar_id     BIGINT        NOT NULL,                             -- ссылка на справочник календарь
-    start_time      TIMESTAMP,                                          -- время начала
-    end_time        TIMESTAMP,                                          -- время окончания
+    start_time      TIMESTAMPTZ,                                          -- время начала
+    end_time        TIMESTAMPTZ,                                          -- время окончания
     CONSTRAINT fk_booking_line_booking  FOREIGN KEY (booking_id)  REFERENCES booking  (booking_id)  ON DELETE CASCADE,
     CONSTRAINT fk_booking_line_calendar FOREIGN KEY (calendar_id) REFERENCES calendar (calendar_id) ON DELETE RESTRICT,
     CONSTRAINT fk_booking_line_resource FOREIGN KEY (resource_id) REFERENCES resource (resource_id) ON DELETE RESTRICT,
@@ -111,13 +111,14 @@ COMMENT ON COLUMN booking_line.end_time      IS 'Время окончания';
 CREATE TABLE inventory (
     inventory_id    BIGINT        GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     resource_id     BIGINT        NOT NULL,
+    booking_line_id BIGINT,                                             -- позиция бронирования, без FK
     booking_id      BIGINT,                                             -- NULL при "вводе остатков"
     movement_type   movement_type NOT NULL,                             -- тип движения
     operation_type  operation_type NOT NULL,                            -- тип операции
     payment_type    payment_type,                                       -- тип оплаты
     calendar_id     BIGINT        NOT NULL,                             -- ссылка на справочник календарь (зарезервированная дата)
-    reserved_time   TIMESTAMP,                                          -- зарезервированное время
-    event_time      TIMESTAMP,                                          -- время события
+    reserved_time   TIMESTAMPTZ,                                          -- зарезервированное время
+    event_time      TIMESTAMPTZ,                                          -- время события
     quantity        INTEGER       NOT NULL CHECK (quantity >= 0),       -- количество
     price           NUMERIC(10,2) NOT NULL CHECK (price >= 0),          -- цена за 1 ед. изм.
     CONSTRAINT fk_inventory_resource FOREIGN KEY (resource_id) REFERENCES resource (resource_id) ON DELETE RESTRICT,
@@ -153,6 +154,14 @@ CREATE INDEX idx_inventory_calendar    ON inventory     (calendar_id);
 CREATE UNIQUE INDEX uq_inventory_opening_balance
     ON inventory (resource_id, movement_type, calendar_id, reserved_time)
     WHERE movement_type = 'opening_balance';
+
+-- Дневная запись не содержит reserved_time; NULL не защищён обычным UNIQUE.
+CREATE UNIQUE INDEX uq_inventory_daily_opening
+    ON inventory (resource_id, calendar_id)
+    WHERE movement_type = 'opening_balance' AND reserved_time IS NULL;
+CREATE UNIQUE INDEX uq_inventory_daily_booking_line
+    ON inventory (booking_line_id, calendar_id)
+    WHERE movement_type = 'outgoing' AND reserved_time IS NULL AND booking_line_id IS NOT NULL;
 
 -- ----------------------------------------------------------------------------
 -- 6. (Опционально) роль приложения: права DML без DDL

@@ -424,7 +424,7 @@
         "id": "col_res_unittype",
         "tableId": "tbl_resource",
         "name": "UnitType",
-        "comment": "Enum: 0 - штука, 1 - кг, 2 - литр, 3 - час",
+        "comment": "Enum: 0 - штука, 1 - кг, 2 - литр, 3 - час, 4 - сутки",
         "dataType": "INT",
         "default": "",
         "options": 8,
